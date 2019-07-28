@@ -5,7 +5,7 @@ const config = require("./config.json");
 const client = new Discord.Client();
 const prefix = "!";
 
-client.on("message", async message => {
+client.on("message", async (message) => {
     if (message.author.bot) return;
     if (message.content.indexOf(prefix) !== 0) return;
 
@@ -23,7 +23,7 @@ client.on("message", async message => {
             }
         })
             .then(response => {
-                message.reply("Latest tournament: " + response.data.pop().tournament["full_challonge_url"]);
+                message.reply("the latest " + config.challongeUsername + " bracket is here: " + response.data.pop().tournament["full_challonge_url"]);
             })
             .catch(error => {
                 console.log("ERROR HAS OCCURRED\n");
